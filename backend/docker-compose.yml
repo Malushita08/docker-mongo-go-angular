@@ -1,0 +1,118 @@
+#version: '3.7'
+#services:
+#  mongodb_container:
+#    image: mongo:4.4.4
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: admin
+#      MONGO_INITDB_ROOT_PASSWORD: 101250
+#    ports:
+#      - 27070:27017
+#    volumes:
+#      - mongodb_data_container:/data/db
+#
+#volumes:
+#  mongodb_data_container:
+
+version: '3.1'
+
+services:
+  mongodb2:
+    container_name: mongodb2
+    image: mongo:4.4.4
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 101250
+
+    expose:
+      - 3306
+    volumes:
+      -  mongodb2Volume:/data/db
+    networks:
+      - OfimaticaFinalNetwork
+    restart: always
+#
+#
+#  golang:
+#    image: malushita/backend-angular:1
+#    ports:
+#      - 8095:8080
+#    networks:
+#      - OfimaticaFinalNetwork
+#    depends_on:
+#      - mongodb2
+#    restart: unless-stopped
+#
+volumes:
+  mongodb2Volume:
+#
+networks:
+  OfimaticaFinalNetwork:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.40.0.0/16
+
+
+#variables:
+#  REPO: gitlab.smartcitiesperu.com
+#  PROJECT: greenhouse-api-1.0.0
+#  CONTAINER_NAME: greenhouse-api-dev
+#  DB_HOST: 192.168.71.253
+#  DB_PORT: 27060
+#  DB_USER: admin
+#  DB_PASSWORD: GFRAHp1vlKb59DbSOcznurAZGQB4O9NQUcxq7vA00vM=
+#  DB_NAME: db_greenhouse
+#  SERVER_PORT: 7062
+#  GO_ENV: production
+#  STORAGE_PATH: "/home/smart/greenhouse/storage"
+
+#before_script:
+#  - go get -v -d ./...
+#
+#stages:
+#  - build
+#  - upload
+#  - deploy
+#
+#compile:
+#  stage: build
+#  script:
+#    - CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main ./app
+#    - docker build -t $PROJECT .
+#  tags:
+#    - golang
+#
+#upload-registry-dev:
+#  stage: upload
+#  only:
+#    - develop
+#  script:
+#    - docker tag $PROJECT registry.dev.smartcitiesperu.com:5000/$PROJECT
+#    - docker push registry.dev.smartcitiesperu.com:5000/$PROJECT
+#  tags:
+#    - golang
+#
+#remote-container-dev:
+#  stage: deploy
+#  only:
+#    - develop
+#  script:
+#    - docker pull registry.dev.smartcitiesperu.com:5000/$PROJECT
+#    - docker ps -q --filter "name=$CONTAINER_NAME" | grep -q . && docker stop $CONTAINER_NAME
+#    - docker ps --filter "name=$CONTAINER_NAME" | grep -q . && docker rm -f $CONTAINER_NAME
+#    - >
+#      docker run -d
+#      --name $CONTAINER_NAME
+#      -p $SERVER_PORT:80
+#      -e DB_HOST=$DB_HOST
+#      -e DB_PORT=$DB_PORT
+#      -e DB_USER=$DB_USER
+#      -e DB_PASSWORD=$DB_PASSWORD
+#      -e DB_NAME=$DB_NAME
+#      -e SERVER_PORT=80
+#      -e GO_ENV=$GO_ENV
+#      -e STORAGE_PATH=/home/storage
+#      -v $STORAGE_PATH:/home/storage
+#      registry.dev.smartcitiesperu.com:5000/$PROJECT:latest
+#  tags:
+#    - golang
