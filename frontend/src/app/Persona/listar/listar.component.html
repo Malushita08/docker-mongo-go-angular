@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Estudiantes</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRES</th>
+                        <th>APELLIDOS</th>
+                        <th>CODIGO</th>
+                        <th>DNI</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let estudiante of estudiantes" class="text-center">
+                        <td>{{ estudiante.id }}</td>
+                        <td>{{ estudiante.name }}</td>
+                        <td>{{ estudiante.lastName }}</td>
+                        <td>{{ estudiante.code }}</td>
+                        <td>{{ estudiante.dni }}</td>
+                        <td>
+                            <button class="btn btn-warning">Editar</button>
+                            <button (click)="Remover(estudiante.id)" class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

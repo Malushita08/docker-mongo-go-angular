@@ -1,0 +1,24 @@
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Editar Libros</h3>
+        </div>
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="">Autor:</label>
+                    <input type="text" name="author" [(ngModel)]="libro.author" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Titulo:</label>
+                    <input type="text" name="tittle" [(ngModel)]="libro.tittle" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Precio:</label>
+                    <input type="text" name="price" [(ngModel)]="libro.price" class="form-control">
+                </div>
+                <button  (click)="Actualizar()" class="btn btn-danger" style="margin-top: 10px;">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
