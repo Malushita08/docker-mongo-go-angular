@@ -30,7 +30,7 @@ var rootMutation = graphql.NewObject(graphql.ObjectConfig{
 		"removeStudent": mutations.DeleteStudentMutation,
 
 		// books
-		"addBooks":    mutations.AddBookMutation,
+		"addBook":    mutations.AddBookMutation,
 		"updateBooks": mutations.UpdateBookMutation,
 		"removeBook":  mutations.DeleteBookMutation,
 	},

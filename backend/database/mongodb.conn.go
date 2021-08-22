@@ -8,6 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"os"
 	"time"
 )
 
@@ -18,11 +19,11 @@ var (
 	DB_PORT ="27017"
 	DB_NAME ="db_books"
 
-	MongoDBHosts = fmt.Sprintf("mongodb://%s:%s@%s:%s", DB_USER, DB_PASSWORD, DB_HOST, DB_PORT)
-	//MongoDBHosts = fmt.Sprintf("mongodb://%s:%s@%s:%s", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"))
+	//MongoDBHosts = fmt.Sprintf("mongodb://%s:%s@%s:%s", DB_USER, DB_PASSWORD, DB_HOST, DB_PORT)
+	MongoDBHosts = fmt.Sprintf("mongodb://%s:%s@%s:%s", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"))
 	//MongoDBHosts = fmt.Sprintf("mongodb://%s:%s", os.Getenv("DB_HOST"), os.Getenv("DB_PORT"))
-	//AuthDatabase = os.Getenv("DB_NAME")
-	AuthDatabase = DB_NAME
+	AuthDatabase = os.Getenv("DB_NAME")
+	//AuthDatabase = DB_NAME
 )
 
 var (

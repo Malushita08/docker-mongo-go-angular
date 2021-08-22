@@ -30,7 +30,7 @@ var BookAddInputType = graphql.NewInputObject(graphql.InputObjectConfig{
 		"author": &graphql.InputObjectFieldConfig{
 			Type: graphql.NewNonNull(graphql.String),
 		},
-		"tittle": &graphql.InputObjectFieldConfig{
+		"title": &graphql.InputObjectFieldConfig{
 			Type: graphql.NewNonNull(graphql.String),
 		},
 		"price": &graphql.InputObjectFieldConfig{

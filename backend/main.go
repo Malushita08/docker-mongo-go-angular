@@ -63,10 +63,10 @@ func main() {
 	//	json.NewEncoder(w).Encode(result)
 	//})
 
-	fmt.Println("Server is running on port 8080")
+	fmt.Println("Server is running on port 8001")
 	//http.ListenAndServe(":8080", nil)
 
-	log.Fatalln(http.ListenAndServe(":8080", nil))
+	log.Fatalln(http.ListenAndServe(":8001", nil))
 	//}
 }
 
