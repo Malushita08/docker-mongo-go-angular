@@ -9,7 +9,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: 123
 
-
     expose:
       - 27017
     #ports:
